@@ -26,10 +26,20 @@ class LinkedList {
     }
 
     head() {
+
+        if (this._head == null){
+
+                return null;
+            }
+
         return this._head.data;
     }
 
     tail() {
+        if (this._tail == null){
+
+            return null;
+        }
         return this._tail.data;
 
     }
@@ -42,20 +52,52 @@ class LinkedList {
 
         var newNode = new Node(data, null, null);
         this._nodes.splice(index, 0, newNode);
+
+        this.length ++;
+        return this;
     }
 
     isEmpty() {
+        return this.length === 0;
+    }
 
+    clear() {
+        this._nodes = [];
+        this._head = null;
+        this._tail = null;
+        this.length = 0;
+
+        return this;
 
     }
 
-    clear() {}
+    deleteAt(index) {
+        this._nodes.splice(index, 1);
+        this.length --;
 
-    deleteAt(index) {}
+        return this;
+    }
 
-    reverse() {}
+    reverse() {
 
-    indexOf(data) {}
+        var temp = this._tail;
+        this._tail = this._head;
+        this._head = temp;
+        this._nodes.reverse();
+
+        return this;
+    }
+
+    indexOf(data) {
+
+        for (var i = 0; i < this.length; i++){
+            if (this._nodes[i].data === data)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
 }
 
 module.exports = LinkedList;
