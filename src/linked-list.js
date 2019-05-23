@@ -22,6 +22,7 @@ class LinkedList {
         this._nodes.push(newNode);
 
         this.length++;
+        return this;
 
     }
 
@@ -68,7 +69,6 @@ class LinkedList {
         this.length = 0;
 
         return this;
-
     }
 
     deleteAt(index) {
@@ -76,10 +76,11 @@ class LinkedList {
         this.length --;
 
         return this;
+
+
     }
 
     reverse() {
-
         var temp = this._tail;
         this._tail = this._head;
         this._head = temp;
